@@ -1,22 +1,8 @@
 # Technical challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
-
-Before you start developing make sure you install all the dependencies:
-
-```
-> npm install
-```
-
-then simply run the project
-
-```
-> npm start
-```
-
 ## How to take this test
 
-The is no right or wrong way to do this, we are more interested in the code you write, the development process you use rather than marking your work! Set yourself a time limit and see how get on.
+There is no right or wrong way to do this, we are more interested in the code you write, the development process you use rather than marking your work! Set yourself a time limit and see how get on.
 
 ## Data
 
@@ -36,7 +22,9 @@ Your goal is to build a React and Redux-based UI to explore this data. The inter
 
 ## Technology choices
 
-The use of React and Redux is required. Apart from that, you are completely free to choose libraries, frameworks and tools to best assist you in this challenge. The choice of the method of serving the data to the UI is up to you, but it should use a RESTful API approach.
+The use of React and Redux is required. You can choose to use [create-react-app](https://github.com/facebook/create-react-app) with or without TypeScript. If you prefer you can even bootstrap something on your own with webpack, or any other bundler for that matter.
+
+Apart from that, you are completely free to choose libraries, frameworks and tools to best assist you in this challenge. The choice of the method of serving the data to the UI is up to you, but it should use a RESTful API approach.
 
 ## Once complete
 
