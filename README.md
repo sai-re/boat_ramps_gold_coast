@@ -28,6 +28,6 @@ Apart from that, you are completely free to choose libraries, frameworks and too
 
 ## Once complete
 
-When you've finished writing your code, please host it where we can access it, for example, as a public repo in GitHub (or a private and add us as a collabrator) and any instructions needed to run it.
+When you've finished writing your code, please put it somewhere we can clone it, for example, as a public repo in GitHub (or a private one and add us as a collabrator) and any instructions needed to run it.
 
 ### Good luck!
