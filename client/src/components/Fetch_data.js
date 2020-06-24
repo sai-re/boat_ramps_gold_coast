@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
+import Map from './Map';
 
 class FetchData extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			geoJSON: []
-		}
+		this.state = {}
 	}
 
 	getData = async (endpoint) => { 
@@ -16,6 +15,8 @@ class FetchData extends Component {
 			//fetch response from api
 			const response = await fetch(url);
             const data = await response.json();
+
+            this.setState({geoJSON: data});
 
 		} catch(err) {
 			console.log(err)
@@ -29,7 +30,7 @@ class FetchData extends Component {
 	render() {
 		return (
             <div>
-                dfdf
+                <Map data={this.state.geoJSON} />
             </div>
 		);
 	}
