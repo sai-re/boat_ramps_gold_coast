@@ -1,11 +1,6 @@
 import React, {Component} from 'react';
 
-
 class Map extends Component {
-
-    constructor(props) {
-        super(props)
-    }
 
     initMap = () => {
         //create map
@@ -14,10 +9,10 @@ class Map extends Component {
                 lat: -27.9959656,
                 lng: 153.2879044,
             },
-            zoom: 10
+            zoom: 9
         });
-
-        map.data.loadGeoJson('http://localhost:4000/api/assets');
+        
+        map.data.addGeoJson(this.props.data);
     }
 
     componentDidUpdate = () => this.initMap();
