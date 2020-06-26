@@ -9,4 +9,4 @@ app.use(cors());
 
 app.use('/api', require('./routes/data')); 
 
-app.listen(PORT, () => console.log('Example app listening on port 4000!')); 
+app.listen(PORT, () => console.log('app listening on port 4000!')); 
