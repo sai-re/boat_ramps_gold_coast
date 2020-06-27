@@ -33,7 +33,7 @@ function MaterialChart(props) {
                     chartData={chartData} 
                     title='Ramps per Construction Material'
                     filter={props.filter}
-                    color='#3366cc'
+                    color='#0090b9'
                 />
     }
 

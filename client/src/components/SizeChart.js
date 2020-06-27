@@ -39,7 +39,7 @@ function SizeChart(props) {
                     chartData={chartData} 
                     title='Ramps per Size Category'
                     filter={props.filter}
-                    color='#b0120a'
+                    color='#268f69'
                 />
     }
 
