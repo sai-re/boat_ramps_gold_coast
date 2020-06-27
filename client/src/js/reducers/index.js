@@ -14,6 +14,7 @@ const initialState = {
 function rootReducer(state = initialState, action) {
     switch(action.type) {
         case DATA_LOADED: {
+            //update store with data from api
             const newVals = {
                 geoJSON: {...action.payload},
                 mapJSON: {...action.payload}
@@ -22,17 +23,19 @@ function rootReducer(state = initialState, action) {
             return Object.assign({}, state, {...newVals});
         }
         case FILTER_MATERIAL: {
+            //filter geojson by material name from action
             const filteredData = state.geoJSON.features.filter(item => item.properties.material === action.material ? item : false);
-
+            //create new object with filtered array in geojson format
             const newobj = {
                 type: "FeatureCollection",
                 totalFeatures: filteredData.length,
                 features: filteredData
             }
-
+            //create object copy of old state and overwrite values with new data
             return Object.assign({}, state, { mapJSON: {...newobj} });
         }
         case FILTER_SIZE: {
+            //filter geojson by category name from action and range
             const filteredData = state.geoJSON.features.filter(item => {
                 if (action.category === '0-50' && item.properties.area_ < 50) {
                     return item;
@@ -48,16 +51,17 @@ function rootReducer(state = initialState, action) {
     
                 return false;
             });
-
+            //create new object with filtered array in geojson format
             const newobj = {
                 type: "FeatureCollection",
                 totalFeatures: filteredData.length,
                 features: filteredData
             }
-
+            //create object copy of old state and overwrite values with new data
             return Object.assign({}, state, { mapJSON: {...newobj} });
         }
         case RESET: {
+            //create object copy of old state and overwrite filtered map values with initial geojson values
             return Object.assign({}, state, { mapJSON: {...state.geoJSON} });
         }
         default:

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import FetchData from './components/Fetch_data';
+import FetchData from './components/FetchData';
 
 function App() {
 	return (

@@ -6,6 +6,10 @@
   color: #333333;
 }
 
+.chart__container {
+  padding: 10px;
+}
+
 .chart__holders {
   display: flex;
   justify-content: center;
@@ -17,6 +21,11 @@
   height: 300px;
 }
 
+.chart--bar {
+  width: 600px;
+  height: 400px;
+}
+
 .button {
   margin-top: 20px;
   padding: 10px 15px;
@@ -25,4 +34,15 @@
   color: #ffffff;
   border: none;
   cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  #map-js,
+  .chart--bar {
+    width: 100%;
+  }
+
+  .chart__holders {
+    flex-direction: column;
+  }
 }

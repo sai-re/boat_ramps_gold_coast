@@ -4,6 +4,7 @@ import thunk from "redux-thunk";
 
 const storeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+//create store and pass in reducer and middleware
 const store = createStore(
     rootReducer,
     storeEnhancers(applyMiddleware(thunk))

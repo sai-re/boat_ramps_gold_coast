@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class Map extends Component {
 
     initMap = () => {
-        //create map
+        //create map and pass in geojson data
         const map = new window.google.maps.Map(document.getElementById("map-js"), {
             center: {
                 lat: -27.9959656,
@@ -15,7 +15,9 @@ class Map extends Component {
         map.data.addGeoJson(this.props.data);
     }
 
-    componentDidUpdate = () => this.initMap();
+    componentDidUpdate(){
+        this.initMap();
+    }
 
     render() {
         return(

@@ -5,6 +5,7 @@ import {
     RESET
 } from "../constants/action-types";
 
+//redux thunk middleware to make asynchronous call to api
 export function getData() {
     return function(dispatch) {
         const request = async () => {
@@ -18,14 +19,14 @@ export function getData() {
                 //call dispatch to pass to reducer
                 dispatch({ type: DATA_LOADED, payload: data });
             } catch(err) {
-                console.log(err)
+                console.log(err);
             }
         }
 
         return request();
     };
 }
-
+//actions for filtering and reset
 export function filterMaterial(name) {
     return {
         type: FILTER_MATERIAL,

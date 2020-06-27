@@ -26,7 +26,7 @@ class FetchData extends Component {
 
 	render() {        
 		return (
-            <div className='chart'>
+            <div className='chart__container'>
                 <h1 className="title">Boat ramps in Australia's Gold Coast</h1>
                 <Map data={this.props.mapJSON} />
 
@@ -49,6 +49,7 @@ const mapStateToProps = state => {
     };
 };
 
+//connect to store and recieve state and actions as prop
 export default connect(mapStateToProps, {
     getData, 
     filterMaterial,
