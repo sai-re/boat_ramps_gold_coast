@@ -1,15 +1,17 @@
 import React from 'react';
 import BarChart from './BarChart';
 
-function SizeChart(props) {
+import { ChartProps } from '../types/props';
+import { AreaCount, ChartData} from '../types/charts'
 
+function SizeChart(props: ChartProps) {
     const getChartData = () => {
         //array to hold all area values
-        const areaArr = []
+        const areaArr:number[] = []
         //filter api data and push area values to array
-        props.data.features.map(item => areaArr.push(item.properties.area_));
+        props.data.features.map((item:any) => areaArr.push(item.properties.area_));
         //object to hold area value category and count
-        let areaCount = {};
+        let areaCount: AreaCount = {} as AreaCount;
         //values for each category
         let category1 = 0;
         let category2 = 0;
@@ -29,7 +31,7 @@ function SizeChart(props) {
         const sizeCategory = Object.keys(areaCount);
         const sizeValues = Object.values(areaCount);
         //build new array to hold object properties in a format google charts accepts
-        const chartData = [['Name', 'Size']];
+        const chartData:ChartData = [['Name', 'Size']];
 
         for (let i = 0; i < sizeCategory.length; i++) {
             chartData.push([sizeCategory[i], sizeValues[i]])

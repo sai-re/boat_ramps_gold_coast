@@ -1,7 +1,9 @@
 import React from 'react';
 import Chart from 'react-google-charts';
 
-function BarChart(props) {
+import { BarChartProps } from '../types/props'
+
+function BarChart(props:BarChartProps) {
     return(
         <Chart
             chartType="BarChart"
@@ -19,7 +21,7 @@ function BarChart(props) {
                         //get datapoint row and column value
                         const selection = chart.getSelection();
                         //get chart names and values
-                        const dataTable = chartWrapper.getDataTable();
+                        const dataTable:any = chartWrapper.getDataTable();
                         //prevents error if clicking on data point too fast
                         if (selection.length === 1) {
                             //get row index

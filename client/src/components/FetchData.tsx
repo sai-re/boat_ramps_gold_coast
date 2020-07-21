@@ -11,17 +11,33 @@ import {
     resetMap
 } from "../js/actions/index";
 
-class FetchData extends Component {
-	constructor() {
-		super();
+import { MapProperties } from '../types/state';
+import { Appstate } from '../js/store';
+
+//define types for actions coming through connect
+type DispatchProps = {
+    getData: () => void, 
+    filterMaterial: (name:string) => void,
+    filterSize: (name:string) => void,
+    resetMap: () => void
+}
+
+//link both types from actions and mapstatetoprops
+type Props = DispatchProps & LinkStateProps
+
+class FetchData extends Component<Props> {
+	constructor(props: Props) {
+		super(props);
         
         this.handleReset = this.handleReset.bind(this)
 	}
 
-    handleReset = () => this.props.resetMap();
+    handleReset = () => {
+        if(this.props.resetMap) this.props.resetMap();
+    }
     
     componentDidMount() {
-        this.props.getData()
+        if (this.props.getData) this.props.getData()
     }
 
 	render() {        
@@ -34,6 +50,7 @@ class FetchData extends Component {
 
                 <div className="chart__holders">
                     <MaterialChart data={this.props.geoJSON} filter={this.props.filterMaterial} />
+                    
                     <SizeChart data={this.props.geoJSON} filter={this.props.filterSize} />
                 </div>
             </div>
@@ -41,13 +58,17 @@ class FetchData extends Component {
 	}
 }
 
+//define type for mapStateToProps
+type LinkStateProps = {
+    geoJSON: MapProperties,
+    mapJSON: MapProperties
+}
+
 //get state from reducer
-const mapStateToProps = state => {
-	return { 
-        geoJSON: state.geoJSON,
-        mapJSON: state.mapJSON
-    };
-};
+const mapStateToProps = (state: Appstate):LinkStateProps => ({
+    geoJSON: state.geoJSON,
+    mapJSON: state.mapJSON
+});
 
 //connect to store and recieve state and actions as prop
 export default connect(mapStateToProps, {
