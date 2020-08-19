@@ -27,7 +27,7 @@ function BarChart(props:BarChartProps) {
                             //get row index
                             const index = selection[0].row;
                             //get value from datatable using row index
-                            const name = dataTable.hg[index].c[0].v;
+                            const name = dataTable.fg[index].c[0].v;
                             //call action and pass in name
                             props.filter(name);
                         }

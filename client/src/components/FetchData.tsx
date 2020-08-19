@@ -37,10 +37,10 @@ class FetchData extends Component<Props> {
     }
     
     componentDidMount() {
-        if (this.props.getData) this.props.getData()
+        if (this.props.getData) this.props.getData();
     }
 
-	render() {        
+	render() {      
 		return (
             <div className='chart__container'>
                 <h1 className="title">Boat ramps in Australia's Gold Coast</h1>
