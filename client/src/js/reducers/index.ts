@@ -1,14 +1,9 @@
-import { 
-    DATA_LOADED, 
-    FILTER_MATERIAL,
-    FILTER_SIZE, 
-    RESET
-} from "../constants/action-types";
+import { RESET, DATA_LOADED, FILTER_MATERIAL, FILTER_SIZE } from "../constants/action-types";
 import { AppActionTypes }  from '../../types/actions';
 import { AppState } from '../../types/state'
 
 //declare initial state
-const InitialState: AppState = {
+const initialState: AppState = {
     geoJSON: {
         type: "",
         totalFeatures: 0,
@@ -21,7 +16,7 @@ const InitialState: AppState = {
     }
 };
 
-function rootReducer(state = InitialState, action:AppActionTypes):AppState {
+function rootReducer(state = initialState, action:AppActionTypes):AppState {
     switch(action.type) {
         case DATA_LOADED: {
             //update store with data from api

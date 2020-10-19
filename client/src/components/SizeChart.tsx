@@ -7,7 +7,7 @@ import { AreaCount, ChartData} from '../types/charts'
 function SizeChart(props: ChartProps) {
     const getChartData = () => {
         //array to hold all area values
-        const areaArr:number[] = []
+        const areaArr:number[] = [];
         //filter api data and push area values to array
         props.data.features.map((item:any) => areaArr.push(item.properties.area_));
         //object to hold area value category and count
@@ -24,7 +24,7 @@ function SizeChart(props: ChartProps) {
                 areaCount['50-200'] = category2++
             } else {
                 areaCount['200-526'] = category3++
-            }
+            };
         });
 
         //get keys and values from object
@@ -34,8 +34,8 @@ function SizeChart(props: ChartProps) {
         const chartData:ChartData = [['Name', 'Size']];
 
         for (let i = 0; i < sizeCategory.length; i++) {
-            chartData.push([sizeCategory[i], sizeValues[i]])
-        }
+            chartData.push([sizeCategory[i], sizeValues[i]]);
+        };
 
         return <BarChart 
                     chartData={chartData} 
@@ -43,14 +43,14 @@ function SizeChart(props: ChartProps) {
                     filter={props.filter}
                     color='#268f69'
                 />
-    }
+    };
 
     return(
         <div className="chart">
             {/* call chart if props exists */}
             {Object.keys(props.data).length !== 0 ? getChartData() : null}
         </div>
-    ) 
-}
+    );
+};
 
 export default SizeChart;

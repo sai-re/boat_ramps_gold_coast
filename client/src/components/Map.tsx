@@ -1,19 +1,5 @@
-import React, {Component} from 'react';
-import { MapProperties } from '../types/state'
-
-//types for mapJSON as props
-type Props = {
-    data: MapProperties
-}
-
-//types for google options
-interface MapOptions {
-    center: {
-        lat: number,
-        lng: number
-    },
-    zoom: number
-}
+import React, { Component } from 'react';
+import { MapProperties } from '../types/state';
 
 class Map extends Component<Props> {
     initMap = () => {
@@ -26,23 +12,38 @@ class Map extends Component<Props> {
                 lng: 153.2879044,
             },
             zoom: 9
-        }
+        };
+
         //create map and pass in geojson data
         const map = new window.google.maps.Map(el, options);
         map.data.addGeoJson(this.props.data);
-    }
+    };
 
     componentDidUpdate(){
         this.initMap();
-    }
+    };
 
     render() {
         return(
             <div className="map__holder">
                 <div id="map-js"></div>
             </div>
-        )
-    }
-}
+        );
+    };
+};
+
+//types for mapJSON as props
+interface Props {
+    data: MapProperties
+};
+
+//types for google options
+interface MapOptions {
+    center: {
+        lat: number,
+        lng: number
+    },
+    zoom: number
+};
 
 export default Map;

@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Map from './Map';
 import MaterialChart from './MaterialChart';
 import SizeChart from './SizeChart';
 
-import { connect } from "react-redux";
+import { connect, ConnectedProps } from "react-redux";
 import { 
     getData, 
     filterMaterial,
@@ -12,24 +12,13 @@ import {
 } from "../js/actions/index";
 
 import { MapProperties } from '../types/state';
-import { Appstate } from '../js/store';
+import { Appstate } from '../js/store/index';
 
-//define types for actions coming through connect
-type DispatchProps = {
-    getData: () => void, 
-    filterMaterial: (name:string) => void,
-    filterSize: (name:string) => void,
-    resetMap: () => void
-}
-
-//link both types from actions and mapstatetoprops
-type Props = DispatchProps & LinkStateProps
-
-class FetchData extends Component<Props> {
-	constructor(props: Props) {
+class FetchData extends Component<PropsFromRedux> {
+	constructor(props: PropsFromRedux) {
 		super(props);
         
-        this.handleReset = this.handleReset.bind(this)
+        this.handleReset = this.handleReset.bind(this);
 	}
 
     handleReset = () => {
@@ -40,7 +29,7 @@ class FetchData extends Component<Props> {
         if (this.props.getData) this.props.getData();
     }
 
-	render() {      
+	render() {
 		return (
             <div className='chart__container'>
                 <h1 className="title">Boat ramps in Australia's Gold Coast</h1>
@@ -55,14 +44,8 @@ class FetchData extends Component<Props> {
                 </div>
             </div>
 		);
-	}
-}
-
-//define type for mapStateToProps
-type LinkStateProps = {
-    geoJSON: MapProperties,
-    mapJSON: MapProperties
-}
+	};
+};
 
 //get state from reducer
 const mapStateToProps = (state: Appstate):LinkStateProps => ({
@@ -70,10 +53,22 @@ const mapStateToProps = (state: Appstate):LinkStateProps => ({
     mapJSON: state.mapJSON
 });
 
-//connect to store and recieve state and actions as prop
-export default connect(mapStateToProps, {
+const mapDispatchToProps = {
     getData, 
     filterMaterial,
     filterSize,
     resetMap
-})(FetchData);
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+//define type for mapStateToProps
+interface LinkStateProps {
+    geoJSON: MapProperties,
+    mapJSON: MapProperties
+};
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+//connect to store and recieve state and actions as prop
+export default connector(FetchData);

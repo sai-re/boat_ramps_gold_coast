@@ -1,7 +1,7 @@
 import React from 'react';
 import Chart from 'react-google-charts';
 
-import { BarChartProps } from '../types/props'
+import { BarChartProps } from '../types/props';
 
 function BarChart(props:BarChartProps) {
     return(
@@ -30,12 +30,12 @@ function BarChart(props:BarChartProps) {
                             const name = dataTable.fg[index].c[0].v;
                             //call action and pass in name
                             props.filter(name);
-                        }
+                        };
                     }
                 }
             ]}
         />
-    )
-}
+    );
+};
 
 export default BarChart;
