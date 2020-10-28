@@ -14,7 +14,7 @@ import {
 import { MapProperties } from '../types/state';
 import { Appstate } from '../js/store/index';
 
-class FetchData extends Component<PropsFromRedux> {
+export class FetchData extends Component<PropsFromRedux> {
 	constructor(props: PropsFromRedux) {
 		super(props);
         
