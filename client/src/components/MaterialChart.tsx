@@ -8,6 +8,7 @@ function MaterialChart(props: ChartProps) {
     const getChartData = () => {
         //array to hold all materials
         const materialsArr:string[] = [];
+
         //filter api data and push materials to array
         props.data.features.map((item:any) => materialsArr.push(item.properties.material));
         //object to hold material type and count
@@ -28,22 +29,21 @@ function MaterialChart(props: ChartProps) {
         //build new array to hold object properties in a format google charts accepts
         const chartData:ChartData = [['Name', 'Materials']];
 
-        for (let i = 0; i < materialNames.length; i++) {
-            chartData.push([materialNames[i], materialValues[i]])
-        }
+        materialNames.forEach((name, i) => chartData.push([name, materialValues[i]]));
 
         return <BarChart 
                     chartData={chartData} 
                     title='Ramps per Construction Material'
                     filter={props.filter}
                     color='#0090b9'
+                    id="material-chart"
                 />
     };
 
     return(
-        <div className="chart">
+        <div className="chart" data-test='component-material-chart'>
             {/* call chart if props exists */}
-            {Object.keys(props.data).length !== 0 ? getChartData() : null}
+            {(props.data) ? getChartData() : null}
         </div>
     );
 };

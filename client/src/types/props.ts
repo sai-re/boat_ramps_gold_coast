@@ -13,5 +13,6 @@ export interface BarChartProps {
     chartData: (string|number)[][],
     title: string,
     color:string,
-    filter: filter
+    filter: filter,
+    id: string
 };

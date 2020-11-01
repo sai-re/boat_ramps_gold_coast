@@ -7,7 +7,7 @@ function BarChart(props:BarChartProps) {
     return(
         <Chart
             chartType="BarChart"
-            className="chart--bar" 
+            className="chart--bar"
             data={props.chartData}
             options={{
                 colors: [props.color],

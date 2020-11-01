@@ -42,13 +42,14 @@ function SizeChart(props: ChartProps) {
                     title='Ramps per Size Category'
                     filter={props.filter}
                     color='#268f69'
+                    id="size-chart"
                 />
     };
 
     return(
-        <div className="chart">
+        <div className="chart" data-test='component-size-chart'>
             {/* call chart if props exists */}
-            {Object.keys(props.data).length !== 0 ? getChartData() : null}
+            {(props.data) ? getChartData() : null}
         </div>
     );
 };
